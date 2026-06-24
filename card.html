@@ -12,12 +12,10 @@
 
 </head>
 
-
 <body>
 
 
-<div class="background-effect"></div>
-
+<div class="particles"></div>
 
 
 <div class="game-container">
@@ -25,31 +23,23 @@
 
 <header class="game-header">
 
-
 <div class="logo">
 
-<h1>
-CARD MASTER
-</h1>
-
-<span>
-ELITE
-</span>
+<h1> CARD MASTER </h1>
+<span>ELITE</span>
 
 </div>
 
 
-
 <div class="balance-box">
 
-<span>موجودی</span>
+<div>موجودی</div>
 
 <b>
 🪙 <span id="coins">100000</span>
 </b>
 
 </div>
-
 
 </header>
 
@@ -61,48 +51,24 @@ ELITE
 
 
 <div class="info-box">
-
-<span>
-ورودی
-</span>
-
-<strong id="betView">
-0
-</strong>
-
+<span>ورودی</span>
+<strong id="betView">0</strong>
 </div>
 
 
-
 <div class="info-box">
-
-<span>
-سود فعلی
-</span>
-
-<strong id="profit">
-0
-</strong>
-
+<span>سود</span>
+<strong id="profit">0</strong>
 </div>
 
 
-
 <div class="info-box">
-
-<span>
-ضریب
-</span>
-
-<strong id="multi">
-×1
-</strong>
-
+<span>ضریب</span>
+<strong id="multi">×1</strong>
 </div>
 
 
 </section>
-
 
 
 
@@ -112,49 +78,24 @@ ELITE
 <section class="control-panel">
 
 
-<div class="bet-area">
-
-
-<input 
-id="bet"
-type="number"
-placeholder="مبلغ بازی">
-
-
-<button onclick="startGame()" class="start-btn">
-
-شروع بازی
-
-</button>
-
-
-</div>
-
-
+<input id="bet" type="number" placeholder="مبلغ بازی">
 
 
 
 <div class="risk-panel">
 
-
 <button onclick="setRisk('safe')">
-
-امن
-
+SAFE
 </button>
 
 
 <button onclick="setRisk('normal')">
-
-عادی
-
+NORMAL
 </button>
 
 
 <button onclick="setRisk('hard')">
-
-ریسکی
-
+ELITE
 </button>
 
 
@@ -162,8 +103,16 @@ placeholder="مبلغ بازی">
 
 
 
-</section>
 
+<button class="start-btn" onclick="startGame()">
+
+🎴 شروع بازی
+
+</button>
+
+
+
+</section>
 
 
 
@@ -172,7 +121,6 @@ placeholder="مبلغ بازی">
 
 <section id="cards" class="cards-table">
 
-
 </section>
 
 
@@ -180,19 +128,14 @@ placeholder="مبلغ بازی">
 
 
 
+<div class="action-panel">
 
-<section class="action-panel">
 
-
-<button 
-id="cashout"
-onclick="cashOut()"
-disabled>
+<button id="cashout" onclick="cashOut()" disabled>
 
 💰 برداشت سود
 
 </button>
-
 
 
 <button onclick="startGame()">
@@ -202,9 +145,7 @@ disabled>
 </button>
 
 
-</section>
-
-
+</div>
 
 
 
@@ -212,15 +153,19 @@ disabled>
 
 <div id="message" class="message-box">
 
-آماده شروع بازی
+آماده بازی
 
 </div>
 
 
 
 
+<div id="winCoins" class="coins-effect"></div>
+
 
 </div>
+
+
 
 
 
