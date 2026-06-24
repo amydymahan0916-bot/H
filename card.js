@@ -1,208 +1,237 @@
-let coins = 100000;
-let currentBet = 0;
-
-
-function updateCoins(){
-
-    document.getElementById("coins").innerHTML = coins;
-
-}
+let risk="mid";
 
 
 
+function setRisk(x){
 
-function startGame(){
-
-
-    currentBet = Number(
-        document.getElementById("bet").value
-    );
-
-
-    if(!currentBet || currentBet <= 0){
-
-        alert("مبلغ را وارد کنید");
-        return;
-
-    }
-
-
-    if(currentBet > coins){
-
-        alert("موجودی کافی نیست");
-        return;
-
-    }
-
-
-
-    coins -= currentBet;
-
-    updateCoins();
-
-
-
-    let cards = [
-
-        "BOMB",
-        "BOMB",
-        "POUCH",
-        "×0.1",
-        "×1",
-        "×3"
-
-    ];
-
-
-
-    cards.sort(
-        ()=>Math.random()-0.5
-    );
-
-
-
-    let box =
-    document.getElementById("gameBox");
-
-
-
-    box.innerHTML = `
-
-    <div class="cards">
-
-    ${
-        cards.map((item)=>`
-
-        <div class="card" onclick="openCard(this,'${item}')">
-
-            <div class="card-inner">
-
-                <div class="front">
-                    ?
-                </div>
-
-                <div class="back">
-                    ${item}
-                </div>
-
-            </div>
-
-        </div>
-
-        `).join("")
-    }
-
-    </div>
-
-    `;
-
-
-
-    document.getElementById("result").innerHTML =
-    "یک کارت انتخاب کنید";
+risk=x;
 
 }
 
 
 
 
-
-function openCard(card,value){
-
+function startCard(){
 
 
-    if(card.classList.contains("open"))
-    return;
+let bet =
+Number(document.getElementById("bet").value);
 
 
 
-    card.classList.add("open");
+if(!bet || bet<=0){
+
+alert("مبلغ وارد کنید");
+
+return;
+
+}
 
 
 
-    let result =
-    document.getElementById("result");
+let data =
+JSON.parse(localStorage.getItem("royalData"));
 
 
 
-    if(value=="BOMB"){
+if(data.coins < bet){
 
+alert("موجودی کافی نیست");
 
-        result.innerHTML =
-        `
-        💣 BOMB
+return;
 
-        <br>
-
-        مبلغ ${currentBet} سکه از بین رفت
-
-        `;
-
-
-        document
-        .querySelectorAll(".card")
-        .forEach(c=>c.onclick=null);
+}
 
 
 
-    }
+data.coins-=bet;
 
-
-    else if(value=="POUCH"){
-
-
-        result.innerHTML =
-        `
-        پوچ
-
-        <br>
-
-        جایزه‌ای دریافت نشد
-
-        `;
-
-
-    }
-
-
-    else{
-
-
-        let multi =
-        Number(value.replace("×",""));
+data.games++;
 
 
 
-        let prize =
-        Math.floor(currentBet * multi);
+let cards;
 
 
 
-        coins += prize;
+if(risk=="high"){
+
+cards=[
+"BOMB",
+"BOMB",
+"×3",
+"×2",
+"×1",
+"POUCH"
+];
+
+}
+
+else if(risk=="low"){
+
+cards=[
+"BOMB",
+"×0.5",
+"×1",
+"×1",
+"×2",
+"POUCH"
+];
+
+}
+
+else{
+
+cards=[
+"BOMB",
+"BOMB",
+"POUCH",
+"×0.1",
+"×1",
+"×3"
+];
+
+}
 
 
-        updateCoins();
+
+cards.sort(()=>Math.random()-0.5);
 
 
 
-        result.innerHTML =
-        `
-        🎉 برنده شدید
+let box=document.getElementById("cards");
 
-        <br>
-
-        ضریب:
-        ${value}
-
-        <br>
-
-        جایزه:
-        ${prize} 🪙
-
-        `;
+box.innerHTML="";
 
 
-    }
+
+cards.forEach(c=>{
+
+
+box.innerHTML+=`
+
+<div class="card" onclick="openCard(this,'${c}',${bet})">
+
+
+<div class="inner">
+
+
+<div class="front">
+RG
+</div>
+
+
+<div class="back">
+${c}
+</div>
+
+
+</div>
+
+
+</div>
+
+`;
+
+
+});
+
+
+
+localStorage.setItem(
+"royalData",
+JSON.stringify(data)
+);
+
+
+document.getElementById("result").innerHTML=
+"یک کارت انتخاب کنید";
+
+}
+
+
+
+
+function openCard(card,value,bet){
+
+
+if(card.classList.contains("open"))
+return;
+
+
+card.classList.add("open");
+
+
+let data =
+JSON.parse(localStorage.getItem("royalData"));
+
+
+
+let text="";
+
+
+
+if(value=="BOMB"){
+
+
+text="💣 بمب! مبلغ بازی از بین رفت";
+
+
+}
+
+
+
+else if(value=="POUCH"){
+
+
+text="پوچ شد";
+
+}
+
+
+else{
+
+
+let multi=
+Number(value.replace("×",""));
+
+
+let win=
+Math.floor(bet*multi);
+
+
+data.coins+=win;
+
+data.wins++;
+
+if(win>data.record)
+data.record=win;
+
+
+text=
+"🎉 بردید "+win+" 🪙";
+
+
+}
+
+
+
+data.xp+=20;
+
+
+
+localStorage.setItem(
+"royalData",
+JSON.stringify(data)
+);
+
+
+
+document.getElementById("result").innerHTML=text;
+
+
+
+document.getElementById("coins").innerHTML=data.coins;
 
 
 }
