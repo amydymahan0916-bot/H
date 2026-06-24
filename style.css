@@ -1,85 +1,143 @@
 *{
-    box-sizing:border-box;
-    font-family:tahoma;
+
+box-sizing:border-box;
+font-family:tahoma;
+
 }
 
+
+
 body{
-    margin:0;
-    background:
-    radial-gradient(circle at top,#242424,#050505 70%);
-    color:white;
-    min-height:100vh;
+
+margin:0;
+
+background:
+radial-gradient(circle at top,#292929,#050505 70%);
+
+color:white;
+
+min-height:100vh;
+
 }
+
+
+
+
+.loader{
+
+position:fixed;
+
+inset:0;
+
+background:#050505;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+z-index:10;
+
+animation:hide 2s forwards;
+
+}
+
+
+
+.logo{
+
+font-size:45px;
+
+font-weight:bold;
+
+color:#ffd700;
+
+text-shadow:
+0 0 20px #ffd700;
+
+}
+
+
+
+
+@keyframes hide{
+
+to{
+
+opacity:0;
+
+visibility:hidden;
+
+}
+
+}
+
+
+
 
 
 .app{
-    max-width:500px;
-    margin:auto;
-    padding-bottom:80px;
-}
 
+max-width:520px;
 
+margin:auto;
 
-header{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:20px;
-
-    background:#111;
-
-    border-bottom:1px solid #333;
+padding-bottom:90px;
 
 }
 
 
 
-.user-box{
 
-    display:flex;
-    align-items:center;
-    gap:12px;
+
+.top{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:20px;
 
 }
+
+
+
+
+
+.profile{
+
+display:flex;
+
+gap:15px;
+
+align-items:center;
+
+}
+
 
 
 
 .avatar{
 
-    width:55px;
-    height:55px;
+width:60px;
 
-    border-radius:50%;
+height:60px;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+border-radius:50%;
 
-    background:
-    linear-gradient(135deg,#ffd700,#8a6200);
+background:
+linear-gradient(135deg,#ffd700,#8c6500);
 
-    color:#000;
+display:flex;
 
-    font-size:25px;
-    font-weight:bold;
+align-items:center;
 
-}
+justify-content:center;
 
+font-size:30px;
 
-
-.user-box h3{
-
-    margin:0;
-
-}
-
-
-
-.user-box span{
-
-    color:#aaa;
+color:#000;
 
 }
 
@@ -88,64 +146,98 @@ header{
 
 .balance{
 
-    background:#191919;
+background:#111;
 
-    padding:12px 18px;
+padding:15px 20px;
 
-    border-radius:20px;
+border-radius:25px;
 
-    color:#ffd700;
-
-    font-size:20px;
+color:#ffd700;
 
 }
 
+
+
+
+
+.xp-box{
+
+margin:20px;
+
+background:#111;
+
+padding:20px;
+
+border-radius:25px;
+
+}
+
+
+
+
+.xp-bar{
+
+height:12px;
+
+background:#222;
+
+border-radius:20px;
+
+overflow:hidden;
+
+margin-top:15px;
+
+}
+
+
+
+#xpProgress{
+
+height:100%;
+
+width:65%;
+
+background:#ffd700;
+
+}
 
 
 
 
 .stats{
 
-    display:grid;
+display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(3,1fr);
 
-    gap:10px;
+gap:10px;
 
-    padding:20px;
-
-}
-
-
-
-.stat{
-
-    background:#111;
-
-    border-radius:20px;
-
-    padding:15px;
-
-    border:1px solid #292929;
+padding:20px;
 
 }
 
 
 
-.stat p{
 
-    color:#aaa;
+.stats div{
 
-    font-size:13px;
+background:#111;
+
+padding:15px;
+
+border-radius:20px;
+
+text-align:center;
 
 }
 
 
-.stat b{
 
-    color:#ffd700;
+.stats b{
 
-    font-size:22px;
+color:#ffd700;
+
+font-size:25px;
 
 }
 
@@ -154,69 +246,54 @@ header{
 
 .title{
 
-    padding:0 20px;
+padding:20px;
 
 }
+
 
 
 
 
 .games{
 
-    display:grid;
+padding:20px;
 
-    gap:20px;
+display:grid;
 
-    padding:20px;
-
-}
-
-
-
-.game{
-
-    text-decoration:none;
-
-    color:white;
-
-    background:
-
-    linear-gradient(145deg,#171717,#090909);
-
-    border:1px solid #333;
-
-    border-radius:25px;
-
-    padding:25px;
-
-    transition:.3s;
-
-    box-shadow:0 15px 30px #000;
+gap:20px;
 
 }
 
 
 
-.game:hover{
 
-    transform:translateY(-8px);
+.game-card{
 
-    border-color:#ffd700;
+text-decoration:none;
+
+color:white;
+
+background:
+
+linear-gradient(145deg,#181818,#080808);
+
+padding:25px;
+
+border-radius:30px;
+
+border:1px solid #333;
+
+transition:.3s;
 
 }
 
 
 
-.game div{
+.game-card:hover{
 
-    font-size:45px;
+transform:translateY(-8px);
 
-}
-
-
-.game h3{
-
-    color:#ffd700;
+border-color:#ffd700;
 
 }
 
@@ -224,57 +301,49 @@ header{
 
 
 
-.wallet{
+.game-icon{
 
-    padding:20px;
-
-}
-
-
-
-.wallet-card{
-
-    background:
-
-    linear-gradient(145deg,#1b1b1b,#080808);
-
-    border-radius:30px;
-
-    padding:25px;
-
-    border:1px solid #333;
+font-size:55px;
 
 }
 
 
 
-.wallet-card h1{
 
-    color:#ffd700;
+.history,.wallet{
+
+margin:20px;
+
+background:#111;
+
+padding:20px;
+
+border-radius:25px;
 
 }
+
+
 
 
 
 button{
 
-    width:100%;
+width:100%;
 
-    padding:15px;
+padding:16px;
 
-    margin-top:10px;
+margin-top:10px;
 
-    border:0;
+border:0;
 
-    border-radius:18px;
+border-radius:20px;
 
-    background:
+background:
+linear-gradient(135deg,#ffd700,#996d00);
 
-    linear-gradient(135deg,#ffd700,#9b7000);
+font-weight:bold;
 
-    font-size:16px;
-
-    font-weight:bold;
+font-size:16px;
 
 }
 
@@ -284,27 +353,25 @@ button{
 
 nav{
 
-    position:fixed;
+position:fixed;
 
-    bottom:0;
+bottom:0;
 
-    left:0;
+left:0;
 
-    right:0;
+right:0;
 
-    max-width:500px;
+max-width:520px;
 
-    margin:auto;
+margin:auto;
 
-    background:#111;
+background:#111;
 
-    display:flex;
+display:flex;
 
-    justify-content:space-around;
+justify-content:space-around;
 
-    padding:18px;
-
-    border-top:1px solid #333;
+padding:18px;
 
 }
 
@@ -312,8 +379,6 @@ nav{
 
 nav a{
 
-    color:#ffd700;
+color:#ffd700;
 
-    text-decoration:none;
-
-}
+    }
