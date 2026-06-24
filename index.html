@@ -1,55 +1,151 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Royal Games</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-<header>
-<h1>Royal Games</h1>
 
-<div class="coin">
-🪙 موجودی:
-<span id="coins">100000</span>
+<header>
+
+<div class="logo">
+ROYAL GAMES
 </div>
+
+
+<div class="wallet">
+
+🪙
+<span id="coins">100000</span>
+
+</div>
+
 
 </header>
 
 
-<div class="stats">
 
-<h3>عملکرد امروز</h3>
+<div class="profile-box">
 
-<p>برد: <span id="win">0</span></p>
-<p>مصرف: <span id="lose">0</span></p>
-<p>خالص: <span id="profit">0</span></p>
+<h3>پروفایل بازیکن</h3>
+
+<p>
+سطح:
+<span>Gold</span>
+</p>
+
+
+<p>
+برد امروز:
+<span id="todayWin">0</span>
+</p>
+
 
 </div>
 
 
-<div class="menu">
 
-<button onclick="showWheel()">گردونه شانس</button>
 
-<button onclick="showCards()">بازی کارت</button>
+<div class="buttons">
 
-<button onclick="charge()">شارژ حساب</button>
+
+<button onclick="openCards()">
+
+🃏 بازی کارت
+
+</button>
+
+
+
+<button onclick="openWheel()">
+
+🎡 گردونه
+
+</button>
+
+
+
+<button onclick="charge()">
+
+💳 شارژ حساب
+
+</button>
+
+
+
+<button onclick="withdraw()">
+
+💰 برداشت
+
+</button>
+
+
 
 </div>
 
 
 
-<section id="game">
 
-<h2>یک بازی انتخاب کنید</h2>
 
-</section>
+<div id="gameArea">
+
+
+<div class="welcome">
+
+
+<h2>
+خوش آمدید
+</h2>
+
+
+<p>
+یک بازی را انتخاب کنید
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="history">
+
+
+<h3>
+آخرین بازی ها
+</h3>
+
+
+<div id="historyList">
+
+هنوز بازی انجام نشده
+
+</div>
+
+
+</div>
+
+
+
 
 
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
