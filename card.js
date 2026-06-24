@@ -6,6 +6,10 @@ let profit = 0;
 
 let playing = false;
 
+let selectedCards = [];
+
+let totalMultiplier = 1;
+
 
 
 let data = JSON.parse(localStorage.getItem("royalData")) || {
@@ -20,6 +24,7 @@ let data = JSON.parse(localStorage.getItem("royalData")) || {
 
 
 
+
 function save(){
 
     localStorage.setItem(
@@ -31,6 +36,7 @@ function save(){
 
 
 
+
 function update(){
 
     document.getElementById("coins").innerHTML =
@@ -39,8 +45,9 @@ function update(){
 }
 
 
-
 update();
+
+
 
 
 
@@ -51,6 +58,9 @@ function setRisk(type){
     risk = type;
 
 }
+
+
+
 
 
 
@@ -88,8 +98,9 @@ function startGame(){
 
 
 
-
     data.coins -= bet;
+
+
 
     data.games++;
 
@@ -97,7 +108,13 @@ function startGame(){
 
     profit = 0;
 
+    selectedCards = [];
+
+    totalMultiplier = 1;
+
+
     playing = true;
+
 
 
 
@@ -128,14 +145,15 @@ function startGame(){
 
         cards=[
 
-            "×1",
-            "×1.5",
-            "×2",
-            "×3",
-            "POUCH",
-            "BOMB"
+        "×1",
+        "×1.5",
+        "×2",
+        "×3",
+        "POUCH",
+        "BOMB"
 
         ];
+
 
     }
 
@@ -145,14 +163,15 @@ function startGame(){
 
         cards=[
 
-            "BOMB",
-            "BOMB",
-            "×3",
-            "×5",
-            "×8",
-            "POUCH"
+        "BOMB",
+        "BOMB",
+        "×3",
+        "×5",
+        "×8",
+        "POUCH"
 
         ];
+
 
     }
 
@@ -162,15 +181,14 @@ function startGame(){
 
         cards=[
 
-            "BOMB",
-            "BOMB",
-            "POUCH",
-            "×1",
-            "×2",
-            "×3"
+        "BOMB",
+        "BOMB",
+        "POUCH",
+        "×1",
+        "×2",
+        "×3"
 
         ];
-
 
     }
 
@@ -179,6 +197,8 @@ function startGame(){
 
 
     cards.sort(()=>Math.random()-0.5);
+
+
 
 
 
@@ -200,6 +220,7 @@ function startGame(){
 
         <div class="card">
 
+
             <div class="inner"
             onclick="chooseCard(this,'${item}')">
 
@@ -220,6 +241,7 @@ function startGame(){
 
             </div>
 
+
         </div>
 
         `;
@@ -234,8 +256,10 @@ function startGame(){
     document.getElementById("cashout").disabled=false;
 
 
-    document.getElementById("message").innerHTML =
-    "یک کارت انتخاب کنید";
+
+    document.getElementById("message").innerHTML=
+
+    "کارت انتخاب کنید";
 
 
 
@@ -263,14 +287,12 @@ function chooseCard(card,value){
 
 
 
-    let parent =
-    card.parentElement;
+    let parent = card.parentElement;
 
 
 
     if(parent.classList.contains("open"))
     return;
-
 
 
 
@@ -280,12 +302,12 @@ function chooseCard(card,value){
 
 
 
+
+
     if(value=="BOMB"){
 
 
-
         parent.classList.add("bomb");
-
 
 
         profit=0;
@@ -310,20 +332,8 @@ function chooseCard(card,value){
         `;
 
 
-
-        document.body.style.animation="shake .5s";
-
-
-
-        setTimeout(()=>{
-
-            document.body.style.animation="";
-
-        },500);
-
-
-
         return;
+
 
     }
 
@@ -332,8 +342,9 @@ function chooseCard(card,value){
 
 
 
-    if(value=="POUCH"){
 
+
+    if(value=="POUCH"){
 
 
         document.getElementById("message").innerHTML=
@@ -359,22 +370,36 @@ function chooseCard(card,value){
 
 
 
-    profit =
-    Math.floor(bet * multi);
+    selectedCards.push(multi);
 
+
+
+    totalMultiplier *= multi;
+
+
+
+
+    profit =
+    Math.floor(
+        bet * totalMultiplier
+    );
 
 
 
 
     document.getElementById("multi").innerHTML =
-    value;
+
+    "×"+totalMultiplier;
 
 
 
-    animateNumber(
-        document.getElementById("profit"),
-        profit
-    );
+
+
+    document.getElementById("profit").innerHTML =
+
+    profit.toLocaleString();
+
+
 
 
 
@@ -382,61 +407,59 @@ function chooseCard(card,value){
 
 
 
+
+
+    let list="";
+
+
+
+    selectedCards.forEach((x,index)=>{
+
+
+        list +=
+
+        `
+        کارت ${index+1}: ×${x}
+        <br>
+        `;
+
+
+    });
+
+
+
+
+
     document.getElementById("message").innerHTML=
 
     `
+
     ✨ برد
+
+
+    <br><br>
+
+    ${list}
+
 
     <br>
 
-    سود فعلی:
+    مجموع ضریب:
+    ×${totalMultiplier}
+
+
+    <br><br>
+
+
+    مجموع سود:
     ${profit.toLocaleString()} 🪙
+
 
     `;
 
 
 
 }
-
-
-
-
-
-
-
-
-function animateNumber(element,target){
-
-
-let start=0;
-
-
-let timer=setInterval(()=>{
-
-
-    start += Math.ceil(target/30);
-
-
-
-    if(start>=target){
-
-        start=target;
-
-        clearInterval(timer);
-
-    }
-
-
-    element.innerHTML =
-    start.toLocaleString();
-
-
-},30);
-
-
-
-}
-
 
 
 
@@ -454,26 +477,28 @@ function cashOut(){
 
 
 
+
     data.coins += profit;
+
 
 
     data.wins++;
 
 
 
-    if(profit>data.record){
+    if(profit > data.record)
 
-        data.record=profit;
+    data.record = profit;
 
-    }
 
 
 
     data.history.unshift(
 
-        "Card Master + "+profit+" 🪙"
+    "Card Master + "+profit+" 🪙"
 
     );
+
 
 
 
@@ -485,16 +510,21 @@ function cashOut(){
 
 
 
+
     document.getElementById("message").innerHTML=
 
     `
+
     💰 برداشت موفق
 
+
     <br>
+
 
     ${profit.toLocaleString()} 🪙
 
     `;
+
 
 
 
@@ -503,4 +533,4 @@ function cashOut(){
     update();
 
 
-                  }
+}
