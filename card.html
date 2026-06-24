@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Card Master PRO</title>
+<title>Card Master PRO+</title>
 
 <link rel="stylesheet" href="card.css">
 
@@ -16,17 +16,27 @@
 <body>
 
 
-<div class="app">
+<div class="game">
 
 
-<header>
+<header class="top">
 
-<h1>🃏 CARD MASTER PRO</h1>
+<div>
+
+<h1>🃏 CARD MASTER</h1>
+
+<span>PRO+</span>
+
+</div>
 
 
-<div class="balance">
+<div class="wallet">
+
 🪙
-<span id="coins">0</span>
+<b id="coins">
+0
+</b>
+
 </div>
 
 </header>
@@ -34,31 +44,43 @@
 
 
 
-<section class="info">
+
+<section class="dashboard">
 
 
 <div>
-مبلغ بازی
-<b id="betShow">
+
+<p>ورودی</p>
+
+<strong id="betView">
 0
-</b>
+</strong>
+
 </div>
 
 
+
 <div>
-سود فعلی
-<b id="profit">
+
+<p>سود</p>
+
+<strong id="profit">
 0
-</b>
+</strong>
+
 </div>
+
 
 
 <div>
-ضریب
-<b id="multi">
-×1
-</b>
+
+<p>ضریب</p>
+
+<strong id="multi">
+×1</strong>
+
 </div>
+
 
 
 </section>
@@ -67,14 +89,40 @@
 
 
 
-<section class="start-box">
 
 
-<input id="bet" placeholder="مبلغ ورود">
+<section class="control">
 
 
-<button onclick="startGame()">
+<input id="bet" placeholder="مبلغ بازی">
+
+
+<div class="risk">
+
+
+<button onclick="setRisk('safe')">
+امن
+</button>
+
+
+<button onclick="setRisk('normal')">
+عادی
+</button>
+
+
+<button onclick="setRisk('hard')">
+خطرناک
+</button>
+
+
+</div>
+
+
+
+<button class="start" onclick="startGame()">
+
 شروع بازی
+
 </button>
 
 
@@ -85,9 +133,11 @@
 
 
 
-<div id="cards" class="cards">
+<div id="table" class="table">
+
 
 </div>
+
 
 
 
@@ -96,7 +146,7 @@
 <div class="actions">
 
 
-<button id="cashout" onclick="cashOut()" disabled>
+<button id="cashout" onclick="cashout()" disabled>
 
 💰 برداشت سود
 
@@ -109,7 +159,7 @@
 
 
 
-<div class="result" id="result">
+<div id="message" class="message">
 
 آماده بازی
 
