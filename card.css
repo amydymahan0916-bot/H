@@ -1,8 +1,9 @@
 *{
+
 box-sizing:border-box;
 font-family:tahoma;
-}
 
+}
 
 
 body{
@@ -10,7 +11,7 @@ body{
 margin:0;
 
 background:
-radial-gradient(circle,#19331b,#050505);
+radial-gradient(circle,#1d351f,#050505);
 
 color:white;
 
@@ -20,7 +21,7 @@ text-align:center;
 
 
 
-.card-app{
+.app{
 
 max-width:520px;
 
@@ -29,6 +30,7 @@ margin:auto;
 padding:20px;
 
 }
+
 
 
 
@@ -44,19 +46,21 @@ align-items:center;
 
 
 
-header h1{
+h1{
 
 color:#ffd700;
+
+font-size:24px;
 
 }
 
 
 
-.money{
+.balance{
 
 background:#111;
 
-padding:15px 20px;
+padding:15px;
 
 border-radius:20px;
 
@@ -67,15 +71,50 @@ color:#ffd700;
 
 
 
-.setup{
+.info{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:10px;
 
 margin-top:25px;
 
+}
+
+
+
+.info div{
+
 background:#111;
 
-padding:25px;
+padding:15px;
 
-border-radius:30px;
+border-radius:20px;
+
+}
+
+
+
+.info b{
+
+display:block;
+
+color:#ffd700;
+
+font-size:20px;
+
+margin-top:8px;
+
+}
+
+
+
+
+.start-box{
+
+margin-top:25px;
 
 }
 
@@ -87,9 +126,9 @@ width:90%;
 
 padding:15px;
 
-border-radius:20px;
-
 border:0;
+
+border-radius:20px;
 
 background:#222;
 
@@ -105,26 +144,19 @@ font-size:18px;
 
 button{
 
-padding:14px;
+padding:15px;
 
 border:0;
 
-border-radius:18px;
-
-margin:8px;
+border-radius:20px;
 
 background:
 
-linear-gradient(135deg,#ffd700,#956b00);
+linear-gradient(135deg,#ffd700,#9b7000);
 
 font-weight:bold;
 
-}
-
-
-
-
-.start{
+margin-top:15px;
 
 width:90%;
 
@@ -133,8 +165,7 @@ width:90%;
 
 
 
-#cards{
-
+.cards{
 
 display:grid;
 
@@ -147,7 +178,6 @@ justify-content:center;
 margin-top:40px;
 
 }
-
 
 
 
@@ -185,9 +215,9 @@ transform:rotateY(180deg);
 
 
 
+
 .front,
 .back{
-
 
 position:absolute;
 
@@ -195,7 +225,7 @@ width:105px;
 
 height:160px;
 
-border-radius:22px;
+border-radius:25px;
 
 display:flex;
 
@@ -215,13 +245,11 @@ backface-visibility:hidden;
 
 background:
 
-linear-gradient(145deg,#151515,#000);
+linear-gradient(145deg,#222,#000);
 
 border:2px solid #ffd700;
 
 color:#ffd700;
-
-box-shadow:0 10px 30px #000;
 
 }
 
@@ -242,9 +270,27 @@ font-weight:bold;
 
 
 
+.card:hover{
+
+transform:translateY(-10px);
+
+}
+
+
+
+#cashout{
+
+background:
+
+linear-gradient(135deg,#00ff88,#008844);
+
+}
+
+
+
 .result{
 
-margin-top:35px;
+margin-top:30px;
 
 background:#111;
 
