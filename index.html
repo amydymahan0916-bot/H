@@ -4,9 +4,9 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Royal Games</title>
+<title>Royal Games PRO</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -16,12 +16,24 @@
 <body>
 
 
+<div class="loader" id="loader">
+
+<div class="logo">
+ROYAL
+</div>
+
+</div>
+
+
+
+
 <div class="app">
 
 
-<header>
+<header class="top">
 
-<div class="user-box">
+
+<div class="profile">
 
 <div class="avatar">
 M
@@ -34,12 +46,11 @@ M
 Mahan
 </h3>
 
-<span>
-Level 12
-</span>
+<p>
+Level <span id="level">12</span>
+</p>
 
 </div>
-
 
 </div>
 
@@ -62,16 +73,46 @@ Level 12
 
 
 
+<section class="xp-box">
+
+<div class="xp-title">
+
+XP
+
+<span id="xp">
+650
+</span>
+/
+1000
+
+</div>
+
+
+<div class="xp-bar">
+
+<div id="xpProgress"></div>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
 <section class="stats">
 
 
-<div class="stat">
+<div>
 
 <p>
 برد امروز
 </p>
 
-<b id="win">
+<b id="wins">
 0
 </b>
 
@@ -79,11 +120,10 @@ Level 12
 </div>
 
 
-
-<div class="stat">
+<div>
 
 <p>
-تعداد بازی
+بازی‌ها
 </p>
 
 <b id="games">
@@ -94,8 +134,7 @@ Level 12
 </div>
 
 
-
-<div class="stat">
+<div>
 
 <p>
 رکورد
@@ -117,28 +156,30 @@ Level 12
 
 
 <h2 class="title">
-بازی ها
+بازی‌ها
 </h2>
 
 
 
 
+<section class="games">
 
-<div class="games">
+
+<a href="card.html" class="game-card">
 
 
-<a href="card.html" class="game">
-
-<div>
+<div class="game-icon">
 🃏
 </div>
 
+
 <h3>
-Card Master
+CARD MASTER
 </h3>
 
+
 <p>
-انتخاب کارت
+بازی کارت حرفه‌ای
 </p>
 
 
@@ -148,16 +189,16 @@ Card Master
 
 
 
-<a href="wheel.html" class="game">
+<a href="wheel.html" class="game-card">
 
 
-<div>
+<div class="game-icon">
 🎡
 </div>
 
 
 <h3>
-Lucky Wheel
+LUCKY WHEEL
 </h3>
 
 
@@ -170,7 +211,29 @@ Lucky Wheel
 
 
 
+</section>
+
+
+
+
+
+
+<section class="history">
+
+
+<h2>
+آخرین فعالیت‌ها
+</h2>
+
+
+<div id="history">
+
+هنوز بازی‌ای انجام نشده
+
 </div>
+
+
+</section>
 
 
 
@@ -186,20 +249,6 @@ Lucky Wheel
 </h2>
 
 
-<div class="wallet-card">
-
-<h1>
-
-🪙
-
-<span id="walletCoins">
-100000
-
-</span>
-
-</h1>
-
-
 <button onclick="charge()">
 شارژ حساب
 </button>
@@ -208,9 +257,6 @@ Lucky Wheel
 <button onclick="withdraw()">
 برداشت
 </button>
-
-
-</div>
 
 
 </section>
@@ -242,13 +288,13 @@ Lucky Wheel
 
 
 
+
 </div>
 
 
 
 
-<script src="script.js"></script>
-
+<script src="app.js"></script>
 
 </body>
 
