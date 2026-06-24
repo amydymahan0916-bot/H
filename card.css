@@ -1,36 +1,73 @@
 *{
-
 box-sizing:border-box;
 font-family:tahoma;
-
 }
-
 
 
 body{
 
 margin:0;
 
-background:
+min-height:100vh;
 
-radial-gradient(circle at top,#243b24,#030303);
+background:
+radial-gradient(circle at top,#47320f,#050505 70%);
 
 color:white;
 
-text-align:center;
+overflow-x:hidden;
 
 }
+
+
+
+
+
+.smoke{
+
+position:fixed;
+
+inset:0;
+
+background:
+
+radial-gradient(circle,#ffffff12,transparent 60%);
+
+animation:smokeMove 8s infinite alternate;
+
+pointer-events:none;
+
+}
+
+
+
+@keyframes smokeMove{
+
+from{
+transform:translateY(20px);
+opacity:.4;
+}
+
+to{
+transform:translateY(-20px);
+opacity:.7;
+}
+
+}
+
 
 
 
 
 .game{
 
-max-width:520px;
+max-width:550px;
 
 margin:auto;
 
 padding:20px;
+
+position:relative;
 
 }
 
@@ -38,7 +75,7 @@ padding:20px;
 
 
 
-.top{
+.header{
 
 display:flex;
 
@@ -50,81 +87,130 @@ align-items:center;
 
 
 
-h1{
+
+.brand h1{
+
+margin:0;
 
 color:#ffd700;
 
-margin-bottom:0;
+font-size:28px;
+
+text-shadow:
+
+0 0 15px #ffd700;
 
 }
+
+
+
+.brand span{
+
+color:#aaa;
+
+letter-spacing:5px;
+
+}
+
 
 
 
 .wallet{
 
-background:#111;
+background:
 
-padding:15px 20px;
+linear-gradient(145deg,#191919,#050505);
+
+border:1px solid #806000;
+
+padding:15px 25px;
 
 border-radius:25px;
 
 color:#ffd700;
 
+box-shadow:
+
+0 0 20px #000;
+
 }
 
 
 
 
 
-.dashboard{
+
+
+.panel{
 
 display:grid;
 
 grid-template-columns:repeat(3,1fr);
 
-gap:10px;
+gap:12px;
 
-margin:25px 0;
+margin-top:25px;
 
 }
 
 
 
 
-.dashboard div{
+.panel div{
 
-background:#111;
+background:
 
-border-radius:20px;
-
-padding:15px;
+linear-gradient(145deg,#171717,#050505);
 
 border:1px solid #333;
 
+padding:18px;
+
+border-radius:20px;
+
 }
 
 
 
-.dashboard strong{
+.panel label{
 
 display:block;
 
-color:#ffd700;
+color:#aaa;
+
+}
+
+
+
+.panel strong{
+
+display:block;
+
+margin-top:10px;
 
 font-size:22px;
+
+color:#ffd700;
 
 }
 
 
 
 
-.control{
 
-background:#111;
+
+
+.controls{
+
+margin-top:25px;
+
+background:#0d0d0d;
 
 padding:20px;
 
 border-radius:30px;
+
+border:1px solid #333;
 
 }
 
@@ -134,13 +220,13 @@ input{
 
 width:90%;
 
-padding:15px;
+padding:16px;
 
 border-radius:20px;
 
 background:#222;
 
-border:0;
+border:1px solid #555;
 
 color:white;
 
@@ -156,43 +242,68 @@ button{
 
 border:0;
 
-border-radius:20px;
-
 padding:15px;
 
-margin:5px;
-
-background:
-
-linear-gradient(135deg,#ffd700,#8a6200);
+border-radius:20px;
 
 font-weight:bold;
 
+cursor:pointer;
+
+background:
+
+linear-gradient(135deg,#ffd700,#8b6500);
+
+color:#111;
+
+margin:5px;
+
 }
 
 
 
-.start{
+.buttons{
+
+display:flex;
+
+justify-content:center;
+
+}
+
+
+
+.buttons button{
+
+width:30%;
+
+}
+
+
+
+
+
+.play{
 
 width:90%;
 
+font-size:18px;
+
 }
 
 
 
 
+.cards{
 
-.table{
+margin-top:40px;
 
 display:grid;
 
 grid-template-columns:repeat(3,105px);
 
-gap:20px;
+gap:25px;
 
 justify-content:center;
-
-margin-top:40px;
 
 }
 
@@ -201,13 +312,31 @@ margin-top:40px;
 
 .card{
 
-width:105px;
-
 height:160px;
 
-perspective:1000px;
+perspective:1200px;
 
-cursor:pointer;
+animation:cardIn .6s backwards;
+
+}
+
+
+
+@keyframes cardIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(80px) rotateX(60deg);
+
+}
+
+to{
+
+opacity:1;
+
+}
 
 }
 
@@ -215,13 +344,15 @@ cursor:pointer;
 
 .inner{
 
-height:100%;
-
 width:100%;
+
+height:100%;
 
 transition:1s;
 
 transform-style:preserve-3d;
+
+position:relative;
 
 }
 
@@ -242,19 +373,17 @@ transform:rotateY(180deg);
 
 position:absolute;
 
-width:105px;
+width:100%;
 
-height:160px;
+height:100%;
 
 border-radius:25px;
 
 display:flex;
 
-align-items:center;
-
 justify-content:center;
 
-font-size:35px;
+align-items:center;
 
 backface-visibility:hidden;
 
@@ -262,19 +391,26 @@ backface-visibility:hidden;
 
 
 
+
 .front{
 
 background:
 
-linear-gradient(145deg,#111,#000);
+linear-gradient(145deg,#191919,#000);
 
 border:2px solid #ffd700;
 
+box-shadow:
+
+0 15px 35px #000;
+
+font-size:35px;
+
 color:#ffd700;
 
-box-shadow:0 15px 40px #000;
-
 }
+
+
 
 
 
@@ -282,9 +418,13 @@ box-shadow:0 15px 40px #000;
 
 transform:rotateY(180deg);
 
-background:#ffd700;
+background:
+
+linear-gradient(145deg,#ffd700,#8c6200);
 
 color:#000;
+
+font-size:25px;
 
 font-weight:bold;
 
@@ -293,29 +433,34 @@ font-weight:bold;
 
 
 
-
 .card:hover{
 
-transform:translateY(-10px);
+transform:translateY(-15px);
 
 }
+
 
 
 
 
 .win{
 
-animation:win 1s infinite;
+animation:
+
+gold 1s infinite;
 
 }
 
 
 
-@keyframes win{
+@keyframes gold{
 
 50%{
 
+filter:brightness(1.8);
+
 box-shadow:
+
 0 0 50px gold;
 
 }
@@ -328,41 +473,75 @@ box-shadow:
 
 .bomb{
 
-animation:bomb .5s;
+animation:
+
+shake .5s;
 
 }
 
 
 
-@keyframes bomb{
-
+@keyframes shake{
 
 25%{
 
-transform:translateX(-20px);
+transform:translateX(-15px);
 
 }
-
 
 50%{
 
-transform:translateX(20px);
+transform:translateX(15px);
+
+}
 
 }
 
 
+
+
+
+.bottom{
+
+margin-top:30px;
+
 }
+
+
+
+.bottom button{
+
+width:90%;
+
+}
+
+
+
+#cashout{
+
+background:
+
+linear-gradient(135deg,#00ff88,#008844);
+
+color:white;
+
+}
+
+
+
 
 
 .message{
 
-margin-top:30px;
+margin-top:25px;
 
 background:#111;
 
-padding:20px;
+padding:25px;
 
 border-radius:25px;
+
+border:1px solid #333;
 
 font-size:20px;
 
