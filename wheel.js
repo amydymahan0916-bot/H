@@ -1,49 +1,40 @@
-let coins = 100000;
+let spinning=false;
 
 
-let prizes = [
+let prizes=[
 
 "پوچ",
-"10000",
-"1000",
-"3000",
+10000,
+1000,
+3000,
 "پوچ",
-"8000",
-"15000",
-"5000",
-"20000",
+8000,
+15000,
+5000,
+20000,
 "پوچ"
 
 ];
 
 
 
-let spinning = false;
 
+function spinWheel(){
 
-
-function updateCoins(){
-
-document.getElementById("coins").innerHTML =
-coins;
-
-}
-
-
-
-
-
-function spin(){
 
 
 if(spinning)
 return;
 
 
+let data =
+JSON.parse(localStorage.getItem("royalData"));
 
-if(coins < 8000){
 
-alert("سکه کافی نیست");
+
+if(data.coins < 8000){
+
+alert("موجودی کافی نیست");
 
 return;
 
@@ -54,11 +45,23 @@ return;
 spinning=true;
 
 
+data.coins-=8000;
 
-coins-=8000;
+
+data.games++;
 
 
-updateCoins();
+
+localStorage.setItem(
+"royalData",
+JSON.stringify(data)
+);
+
+
+
+
+let index =
+Math.floor(Math.random()*10);
 
 
 
@@ -67,18 +70,15 @@ document.getElementById("wheel");
 
 
 
-let random =
-Math.floor(Math.random()*10);
+let rotate =
+
+(360*8)+(index*36);
 
 
 
-let degree =
-(360*8) + (random*36);
+wheel.style.transform=
 
-
-
-wheel.style.transform =
-"rotate("+degree+"deg)";
+`rotate(${rotate}deg)`;
 
 
 
@@ -87,59 +87,79 @@ wheel.style.transform =
 setTimeout(()=>{
 
 
+let prize=prizes[index];
+
+
+
 let result =
-prizes[random];
-
-
-
-let box =
 document.getElementById("result");
 
 
 
-if(result=="پوچ"){
+if(prize==="پوچ"){
 
 
-box.innerHTML=
+result.innerHTML=
 
 `
-<h2>
-نتیجه
-</h2>
 
-پوچ شد
+<div>
+نتیجه:
+</div>
+
+<h2>
+پوچ
+</h2>
 
 `;
 
 
 
-}else{
+}
+
+else{
 
 
-coins += Number(result);
+data.coins+=prize;
+
+data.wins++;
 
 
-updateCoins();
+if(prize>data.record)
+data.record=prize;
 
 
-box.innerHTML=
+data.xp+=20;
+
+
+
+localStorage.setItem(
+"royalData",
+JSON.stringify(data)
+);
+
+
+
+result.innerHTML=
 
 `
-<h2>
-🎉 نتیجه گردونه
-</h2>
 
-
-جایزه شما:
+🎉 تبریک
 
 <br>
 
-<b>
-${result} 🪙
-</b>
+جایزه شما:
+
+<h2>
+${prize} 🪙
+</h2>
 
 `;
 
+
+
+document.getElementById("coins").innerHTML=
+data.coins;
 
 
 }
@@ -149,12 +169,8 @@ ${result} 🪙
 spinning=false;
 
 
-},60000);
+},20000);
 
 
 
 }
-
-
-
-updateCoins();
