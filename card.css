@@ -1,44 +1,187 @@
-.card-game{
+*{
+
+box-sizing:border-box;
+
+font-family:tahoma;
+
+}
+
+
+
+body{
+
+margin:0;
 
 background:
-radial-gradient(circle,#17351c,#050505);
 
-min-height:500px;
+radial-gradient(circle,#18351c,#050505 70%);
+
+color:white;
+
+text-align:center;
+
+}
+
+
+
+
+.game-page{
+
+max-width:500px;
+
+margin:auto;
+
+padding:20px;
+
+}
+
+
+
+
+
+header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+
+
+header h1{
+
+color:#ffd700;
+
+}
+
+
+
+.money{
+
+background:#111;
+
+padding:12px 20px;
+
+border-radius:20px;
+
+color:#ffd700;
+
+}
+
+
+
+
+
+.panel{
+
+background:#111;
+
+border-radius:25px;
 
 padding:25px;
 
-border-radius:30px;
+margin-top:20px;
 
 }
 
 
 
-.cards-container{
+
+
+input{
+
+
+width:90%;
+
+padding:15px;
+
+border-radius:15px;
+
+border:0;
+
+background:#222;
+
+color:white;
+
+text-align:center;
+
+font-size:18px;
+
+
+}
+
+
+
+
+button{
+
+
+margin-top:15px;
+
+width:90%;
+
+padding:16px;
+
+
+border:0;
+
+border-radius:20px;
+
+
+background:
+
+linear-gradient(135deg,#ffd700,#9c7000);
+
+
+font-weight:bold;
+
+font-size:17px;
+
+
+}
+
+
+
+
+
+.cards{
+
 
 display:grid;
 
-grid-template-columns:repeat(3,110px);
 
-gap:25px;
+grid-template-columns:repeat(3,100px);
+
 
 justify-content:center;
 
-margin-top:50px;
+
+gap:20px;
+
+
+margin-top:40px;
+
 
 }
+
 
 
 
 .card{
 
 
-width:110px;
+width:100px;
 
-height:160px;
+height:150px;
 
 perspective:1000px;
 
+
 cursor:pointer;
+
 
 }
 
@@ -46,117 +189,126 @@ cursor:pointer;
 
 .card-inner{
 
+
+position:relative;
+
 width:100%;
 
 height:100%;
 
-transition:transform .8s;
+
+transition:.8s;
+
 
 transform-style:preserve-3d;
 
+
 }
+
 
 
 
 .card.open .card-inner{
 
+
 transform:rotateY(180deg);
+
 
 }
 
 
 
-.card-front,
-.card-back{
+
+.front,
+.back{
 
 
 position:absolute;
+
 
 width:100%;
 
 height:100%;
 
+
 backface-visibility:hidden;
+
 
 border-radius:20px;
 
+
 display:flex;
+
 
 align-items:center;
 
+
 justify-content:center;
 
-font-size:35px;
+
+font-size:30px;
+
 
 }
 
 
 
 
-.card-front{
+.front{
+
 
 background:
 
-linear-gradient(
-145deg,
-#111,
-#000
-);
-
-border:2px solid #d4af37;
+linear-gradient(145deg,#111,#000);
 
 
-color:#d4af37;
+border:2px solid #ffd700;
+
+
+color:#ffd700;
+
 
 }
 
 
 
-.card-back{
+
+.back{
+
 
 transform:rotateY(180deg);
 
 
-background:
-
-linear-gradient(
-145deg,
-#ffd700,
-#8b6500
-);
+background:#ffd700;
 
 
 color:#000;
 
-font-size:25px;
 
 font-weight:bold;
 
-}
-
-
-
-
-.card:hover{
-
-transform:translateY(-10px);
 
 }
 
 
 
 
-.result-box{
+.result{
 
 
-margin-top:35px;
+margin-top:30px;
+
 
 background:#111;
 
+
 padding:20px;
+
 
 border-radius:20px;
 
+
 font-size:20px;
+
 
 }
