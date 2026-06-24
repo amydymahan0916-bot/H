@@ -1,0 +1,256 @@
+*{
+    box-sizing:border-box;
+    font-family:tahoma;
+}
+
+
+body{
+
+    margin:0;
+
+    background:
+    radial-gradient(circle,#222,#050505);
+
+    color:white;
+
+    text-align:center;
+
+}
+
+
+
+.wheel-page{
+
+    max-width:500px;
+
+    margin:auto;
+
+    padding:25px;
+
+}
+
+
+
+h1{
+
+    color:#ffd700;
+
+}
+
+
+
+.money{
+
+    background:#111;
+
+    padding:15px;
+
+    border-radius:20px;
+
+    color:#ffd700;
+
+    display:inline-block;
+
+}
+
+
+
+.pointer{
+
+    font-size:40px;
+
+    color:#ffd700;
+
+    margin-top:20px;
+
+}
+
+
+
+
+.wheel{
+
+
+    width:330px;
+
+    height:330px;
+
+
+    margin:10px auto 30px;
+
+
+    border-radius:50%;
+
+
+    border:10px solid #ffd700;
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+
+    transition:
+    transform 60s cubic-bezier(.15,.8,.2,1);
+
+
+
+    background:
+
+    conic-gradient(
+
+    #c99700 0deg 36deg,
+
+    #222 36deg 72deg,
+
+    #c99700 72deg 108deg,
+
+    #222 108deg 144deg,
+
+    #c99700 144deg 180deg,
+
+    #222 180deg 216deg,
+
+    #c99700 216deg 252deg,
+
+    #222 252deg 288deg,
+
+    #c99700 288deg 324deg,
+
+    #222 324deg 360deg
+
+    );
+
+}
+
+
+
+.wheel div{
+
+    position:absolute;
+
+    width:50%;
+
+    height:50%;
+
+
+    left:25%;
+
+    top:0;
+
+
+    transform-origin:50% 100%;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    font-size:18px;
+
+    font-weight:bold;
+
+
+    color:white;
+
+}
+
+
+
+
+.wheel div:nth-child(1){
+transform:rotate(0deg);
+}
+
+.wheel div:nth-child(2){
+transform:rotate(36deg);
+}
+
+.wheel div:nth-child(3){
+transform:rotate(72deg);
+}
+
+.wheel div:nth-child(4){
+transform:rotate(108deg);
+}
+
+.wheel div:nth-child(5){
+transform:rotate(144deg);
+}
+
+.wheel div:nth-child(6){
+transform:rotate(180deg);
+}
+
+.wheel div:nth-child(7){
+transform:rotate(216deg);
+}
+
+.wheel div:nth-child(8){
+transform:rotate(252deg);
+}
+
+.wheel div:nth-child(9){
+transform:rotate(288deg);
+}
+
+.wheel div:nth-child(10){
+transform:rotate(324deg);
+}
+
+
+
+
+button{
+
+
+    width:90%;
+
+    padding:18px;
+
+
+    border:0;
+
+    border-radius:20px;
+
+
+    background:
+
+    linear-gradient(135deg,#ffd700,#966d00);
+
+
+    font-size:18px;
+
+    font-weight:bold;
+
+
+}
+
+
+
+
+#result{
+
+
+    margin-top:30px;
+
+
+    background:#111;
+
+
+    border-radius:20px;
+
+
+    padding:20px;
+
+
+  }
