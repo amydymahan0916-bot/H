@@ -4,10 +4,9 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Card Master</title>
+<title>Card Master PRO</title>
 
 <link rel="stylesheet" href="card.css">
 
@@ -17,13 +16,13 @@
 <body>
 
 
-<div class="game-page">
+<div class="card-app">
 
 
 <header>
 
 <h1>
-🃏 Card Master
+🃏 CARD MASTER
 </h1>
 
 
@@ -42,8 +41,7 @@
 
 
 
-
-<div class="panel">
+<section class="setup">
 
 
 <h2>
@@ -51,22 +49,28 @@
 </h2>
 
 
-<p>
-مبلغ ورود را انتخاب کنید
-</p>
-
-
 <input 
 id="bet"
 type="number"
-placeholder="مثلا 5000">
+placeholder="مبلغ ورود">
 
 
 
-<button onclick="startGame()">
+<div class="risk">
 
-شروع بازی
 
+<button onclick="setRisk('low')">
+کم
+</button>
+
+
+<button onclick="setRisk('mid')">
+متوسط
+</button>
+
+
+<button onclick="setRisk('high')">
+زیاد
 </button>
 
 
@@ -74,13 +78,22 @@ placeholder="مثلا 5000">
 
 
 
+<button class="start" onclick="startCard()">
+
+شروع بازی
+
+</button>
+
+
+
+</section>
 
 
 
 
-<div id="gameBox">
 
 
+<div id="cards">
 
 </div>
 
@@ -90,15 +103,14 @@ placeholder="مثلا 5000">
 
 <div class="result" id="result">
 
-آماده بازی
+منتظر شروع بازی
 
 </div>
 
 
 
+
 </div>
-
-
 
 
 
@@ -106,4 +118,4 @@ placeholder="مثلا 5000">
 
 </body>
 
-  </html>
+</html>
