@@ -4,9 +4,9 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Card Master PRO+</title>
+<title>Card Master Elite</title>
 
 <link rel="stylesheet" href="card.css">
 
@@ -16,28 +16,39 @@
 <body>
 
 
+<div class="smoke"></div>
+
+
 <div class="game">
 
 
-<header class="top">
+<header class="header">
 
-<div>
 
-<h1>🃏 CARD MASTER</h1>
+<div class="brand">
 
-<span>PRO+</span>
+<h1>
+CARD MASTER
+</h1>
+
+<span>
+ELITE
+</span>
 
 </div>
+
 
 
 <div class="wallet">
 
 🪙
+
 <b id="coins">
 0
 </b>
 
 </div>
+
 
 </header>
 
@@ -45,12 +56,14 @@
 
 
 
-<section class="dashboard">
+<section class="panel">
 
 
 <div>
 
-<p>ورودی</p>
+<label>
+ورودی
+</label>
 
 <strong id="betView">
 0
@@ -59,10 +72,11 @@
 </div>
 
 
-
 <div>
 
-<p>سود</p>
+<label>
+سود
+</label>
 
 <strong id="profit">
 0
@@ -71,16 +85,17 @@
 </div>
 
 
-
 <div>
 
-<p>ضریب</p>
+<label>
+ضریب
+</label>
 
 <strong id="multi">
-×1</strong>
+×1
+</strong>
 
 </div>
-
 
 
 </section>
@@ -91,27 +106,29 @@
 
 
 
-<section class="control">
+<section class="controls">
 
 
-<input id="bet" placeholder="مبلغ بازی">
+<input id="bet"
+placeholder="مبلغ سکه">
 
 
-<div class="risk">
+
+<div class="buttons">
 
 
 <button onclick="setRisk('safe')">
-امن
+SAFE
 </button>
 
 
 <button onclick="setRisk('normal')">
-عادی
+NORMAL
 </button>
 
 
-<button onclick="setRisk('hard')">
-خطرناک
+<button onclick="setRisk('elite')">
+ELITE
 </button>
 
 
@@ -119,9 +136,10 @@
 
 
 
-<button class="start" onclick="startGame()">
 
-شروع بازی
+<button class="play" onclick="startGame()">
+
+🎴 شروع بازی
 
 </button>
 
@@ -133,27 +151,37 @@
 
 
 
-<div id="table" class="table">
+
+<section id="cards" class="cards">
 
 
-</div>
+</section>
 
 
 
 
 
 
-<div class="actions">
+<section class="bottom">
 
 
-<button id="cashout" onclick="cashout()" disabled>
+<button id="cashout" onclick="cashOut()" disabled>
 
 💰 برداشت سود
 
 </button>
 
 
-</div>
+<button onclick="startGame()">
+
+🔄 بازی دوباره
+
+</button>
+
+
+</section>
+
+
 
 
 
@@ -167,8 +195,8 @@
 
 
 
-
 </div>
+
 
 
 
