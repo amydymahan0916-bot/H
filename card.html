@@ -16,74 +16,66 @@
 <body>
 
 
-<div class="card-app">
+<div class="app">
 
 
 <header>
 
-<h1>
-🃏 CARD MASTER
-</h1>
+<h1>🃏 CARD MASTER PRO</h1>
 
 
-<div class="money">
-
+<div class="balance">
 🪙
-<span id="coins">
-100000
-</span>
-
+<span id="coins">0</span>
 </div>
-
 
 </header>
 
 
 
 
-<section class="setup">
+<section class="info">
 
 
-<h2>
-شروع بازی
-</h2>
-
-
-<input 
-id="bet"
-type="number"
-placeholder="مبلغ ورود">
-
-
-
-<div class="risk">
-
-
-<button onclick="setRisk('low')">
-کم
-</button>
-
-
-<button onclick="setRisk('mid')">
-متوسط
-</button>
-
-
-<button onclick="setRisk('high')">
-زیاد
-</button>
-
-
+<div>
+مبلغ بازی
+<b id="betShow">
+0
+</b>
 </div>
 
 
+<div>
+سود فعلی
+<b id="profit">
+0
+</b>
+</div>
 
-<button class="start" onclick="startCard()">
 
+<div>
+ضریب
+<b id="multi">
+×1
+</b>
+</div>
+
+
+</section>
+
+
+
+
+
+<section class="start-box">
+
+
+<input id="bet" placeholder="مبلغ ورود">
+
+
+<button onclick="startGame()">
 شروع بازی
-
 </button>
-
 
 
 </section>
@@ -93,7 +85,23 @@ placeholder="مبلغ ورود">
 
 
 
-<div id="cards">
+<div id="cards" class="cards">
+
+</div>
+
+
+
+
+
+<div class="actions">
+
+
+<button id="cashout" onclick="cashOut()" disabled>
+
+💰 برداشت سود
+
+</button>
+
 
 </div>
 
@@ -103,7 +111,7 @@ placeholder="مبلغ ورود">
 
 <div class="result" id="result">
 
-منتظر شروع بازی
+آماده بازی
 
 </div>
 
