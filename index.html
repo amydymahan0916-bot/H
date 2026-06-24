@@ -1,115 +1,125 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Royal Games</title>
+<title>Royal Games Pro</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
-
 <body>
+
+
+<div class="app">
 
 
 <header>
 
-<div class="logo">
-ROYAL GAMES
+<div class="user">
+<div class="avatar">
+M
+</div>
+
+<div>
+<h3>Mahan</h3>
+<p>Level 12</p>
+</div>
+
 </div>
 
 
-<div class="wallet">
+<div class="balance">
 
 🪙
-<span id="coins">100000</span>
+<span id="coins">
+125000
+</span>
 
 </div>
-
 
 </header>
 
 
 
-<div class="profile-box">
 
-<h3>پروفایل بازیکن</h3>
-
-<p>
-سطح:
-<span>Gold</span>
-</p>
+<section class="stats">
 
 
-<p>
-برد امروز:
-<span id="todayWin">0</span>
-</p>
-
-
+<div>
+<p>برد امروز</p>
+<h2 id="win">
+24000
+</h2>
 </div>
 
 
-
-
-<div class="buttons">
-
-
-<button onclick="openCards()">
-
-🃏 بازی کارت
-
-</button>
-
-
-
-<button onclick="openWheel()">
-
-🎡 گردونه
-
-</button>
-
-
-
-<button onclick="charge()">
-
-💳 شارژ حساب
-
-</button>
-
-
-
-<button onclick="withdraw()">
-
-💰 برداشت
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-<div id="gameArea">
-
-
-<div class="welcome">
-
-
+<div>
+<p>بازی ها</p>
 <h2>
-خوش آمدید
+128
+</h2>
+</div>
+
+
+<div>
+<p>رکورد</p>
+<h2>
+50000
+</h2>
+</div>
+
+
+</section>
+
+
+
+
+<h2 class="title">
+انتخاب بازی
 </h2>
 
 
+
+
+<div class="games">
+
+
+<div class="game-card" onclick="cardsGame()">
+
+<div class="icon">
+🃏
+</div>
+
+<h2>
+Card Master
+</h2>
+
 <p>
-یک بازی را انتخاب کنید
+انتخاب کارت و ضریب
+</p>
+
+
+</div>
+
+
+
+
+<div class="game-card" onclick="wheelGame()">
+
+<div class="icon">
+🎡
+</div>
+
+<h2>
+Lucky Wheel
+</h2>
+
+<p>
+گردونه شانس
 </p>
 
 
@@ -122,30 +132,32 @@ ROYAL GAMES
 
 
 
-<div class="history">
+<nav>
+
+<button>
+خانه
+</button>
+
+<button>
+بازی ها
+</button>
+
+<button onclick="wallet()">
+کیف پول
+</button>
+
+<button>
+پروفایل
+</button>
+
+</nav>
 
 
-<h3>
-آخرین بازی ها
-</h3>
-
-
-<div id="historyList">
-
-هنوز بازی انجام نشده
 
 </div>
 
 
-</div>
-
-
-
-
-
-<script src="script.js"></script>
-
+<script src="app.js"></script>
 
 </body>
-
 </html>
