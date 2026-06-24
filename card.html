@@ -16,16 +16,17 @@
 <body>
 
 
-<div class="smoke"></div>
+<div class="background-effect"></div>
 
 
-<div class="game">
+
+<div class="game-container">
 
 
-<header class="header">
+<header class="game-header">
 
 
-<div class="brand">
+<div class="logo">
 
 <h1>
 CARD MASTER
@@ -39,12 +40,12 @@ ELITE
 
 
 
-<div class="wallet">
+<div class="balance-box">
 
-🪙
+<span>موجودی</span>
 
-<b id="coins">
-0
+<b>
+🪙 <span id="coins">100000</span>
 </b>
 
 </div>
@@ -56,14 +57,14 @@ ELITE
 
 
 
-<section class="panel">
+<section class="game-info">
 
 
-<div>
+<div class="info-box">
 
-<label>
+<span>
 ورودی
-</label>
+</span>
 
 <strong id="betView">
 0
@@ -72,11 +73,12 @@ ELITE
 </div>
 
 
-<div>
 
-<label>
-سود
-</label>
+<div class="info-box">
+
+<span>
+سود فعلی
+</span>
 
 <strong id="profit">
 0
@@ -85,11 +87,12 @@ ELITE
 </div>
 
 
-<div>
 
-<label>
+<div class="info-box">
+
+<span>
 ضریب
-</label>
+</span>
 
 <strong id="multi">
 ×1
@@ -106,29 +109,22 @@ ELITE
 
 
 
-<section class="controls">
+<section class="control-panel">
 
 
-<input id="bet"
-placeholder="مبلغ سکه">
+<div class="bet-area">
 
 
-
-<div class="buttons">
-
-
-<button onclick="setRisk('safe')">
-SAFE
-</button>
+<input 
+id="bet"
+type="number"
+placeholder="مبلغ بازی">
 
 
-<button onclick="setRisk('normal')">
-NORMAL
-</button>
+<button onclick="startGame()" class="start-btn">
 
+شروع بازی
 
-<button onclick="setRisk('elite')">
-ELITE
 </button>
 
 
@@ -137,13 +133,35 @@ ELITE
 
 
 
-<button class="play" onclick="startGame()">
 
-🎴 شروع بازی
+<div class="risk-panel">
+
+
+<button onclick="setRisk('safe')">
+
+امن
 
 </button>
 
 
+<button onclick="setRisk('normal')">
+
+عادی
+
+</button>
+
+
+<button onclick="setRisk('hard')">
+
+ریسکی
+
+</button>
+
+
+</div>
+
+
+
 </section>
 
 
@@ -152,7 +170,7 @@ ELITE
 
 
 
-<section id="cards" class="cards">
+<section id="cards" class="cards-table">
 
 
 </section>
@@ -162,14 +180,19 @@ ELITE
 
 
 
-<section class="bottom">
+
+<section class="action-panel">
 
 
-<button id="cashout" onclick="cashOut()" disabled>
+<button 
+id="cashout"
+onclick="cashOut()"
+disabled>
 
 💰 برداشت سود
 
 </button>
+
 
 
 <button onclick="startGame()">
@@ -187,20 +210,22 @@ ELITE
 
 
 
-<div id="message" class="message">
+<div id="message" class="message-box">
 
-آماده بازی
-
-</div>
-
-
+آماده شروع بازی
 
 </div>
 
+
+
+
+
+</div>
 
 
 
 <script src="card.js"></script>
+
 
 </body>
 
