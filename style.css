@@ -1,0 +1,117 @@
+*{
+    box-sizing:border-box;
+    font-family:tahoma;
+}
+
+body{
+    margin:0;
+    background:#050505;
+    color:white;
+    text-align:center;
+}
+
+
+header{
+    padding:20px;
+    border-bottom:1px solid #333;
+}
+
+
+h1{
+    color:#ffd700;
+    font-size:35px;
+}
+
+
+.coin{
+    background:#111;
+    padding:15px;
+    border-radius:15px;
+    display:inline-block;
+    color:#ffd700;
+}
+
+
+.stats{
+    margin:20px;
+    background:#111;
+    padding:20px;
+    border-radius:20px;
+}
+
+
+.menu button{
+    width:80%;
+    margin:10px;
+    padding:15px;
+    background:#ffd700;
+    border:0;
+    border-radius:15px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+
+#game{
+    margin:20px;
+    background:#111;
+    padding:25px;
+    border-radius:20px;
+}
+
+
+.wheel{
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    margin:20px auto;
+    background:conic-gradient(
+    #ffd700 0deg 36deg,
+    #222 36deg 72deg,
+    #ffd700 72deg 108deg,
+    #222 108deg 144deg,
+    #ffd700 144deg 180deg,
+    #222 180deg 216deg,
+    #ffd700 216deg 252deg,
+    #222 252deg 288deg,
+    #ffd700 288deg 324deg,
+    #222 324deg
+    );
+
+    transition:5s;
+}
+
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,100px);
+    gap:15px;
+    justify-content:center;
+}
+
+
+.card{
+
+    width:100px;
+    height:130px;
+
+    background:#ffd700;
+    color:black;
+
+    border-radius:15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:25px;
+
+    cursor:pointer;
+
+}
+
+
+.card.open{
+    background:#222;
+    color:white;
+}
