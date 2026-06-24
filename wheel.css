@@ -1,31 +1,48 @@
 *{
-    box-sizing:border-box;
-    font-family:tahoma;
+
+box-sizing:border-box;
+font-family:tahoma;
+
 }
+
 
 
 body{
 
-    margin:0;
+margin:0;
 
-    background:
-    radial-gradient(circle,#222,#050505);
+background:
 
-    color:white;
+radial-gradient(circle,#252525,#050505);
 
-    text-align:center;
+color:white;
+
+text-align:center;
 
 }
 
 
 
-.wheel-page{
 
-    max-width:500px;
+.wheel-app{
 
-    margin:auto;
+max-width:520px;
 
-    padding:25px;
+margin:auto;
+
+padding:20px;
+
+}
+
+
+
+header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
 
 }
 
@@ -33,7 +50,7 @@ body{
 
 h1{
 
-    color:#ffd700;
+color:#ffd700;
 
 }
 
@@ -41,15 +58,22 @@ h1{
 
 .money{
 
-    background:#111;
+background:#111;
 
-    padding:15px;
+padding:15px 20px;
 
-    border-radius:20px;
+border-radius:20px;
 
-    color:#ffd700;
+color:#ffd700;
 
-    display:inline-block;
+}
+
+
+
+
+.wheel-area{
+
+margin-top:30px;
 
 }
 
@@ -57,200 +81,175 @@ h1{
 
 .pointer{
 
-    font-size:40px;
+font-size:45px;
 
-    color:#ffd700;
+color:#ffd700;
 
-    margin-top:20px;
+height:50px;
 
 }
-
 
 
 
 .wheel{
 
 
-    width:330px;
+width:350px;
 
-    height:330px;
+height:350px;
 
-
-    margin:10px auto 30px;
-
-
-    border-radius:50%;
+margin:auto;
 
 
-    border:10px solid #ffd700;
+border-radius:50%;
 
 
-    position:relative;
+border:12px solid #d4af37;
 
 
-    overflow:hidden;
+position:relative;
 
 
-    display:flex;
-
-    flex-wrap:wrap;
+overflow:hidden;
 
 
-    transition:
-    transform 60s cubic-bezier(.15,.8,.2,1);
+background:
 
+conic-gradient(
 
+#ffd700 0deg 36deg,
 
-    background:
+#171717 36deg 72deg,
 
-    conic-gradient(
+#ffd700 72deg 108deg,
 
-    #c99700 0deg 36deg,
+#171717 108deg 144deg,
 
-    #222 36deg 72deg,
+#ffd700 144deg 180deg,
 
-    #c99700 72deg 108deg,
+#171717 180deg 216deg,
 
-    #222 108deg 144deg,
+#ffd700 216deg 252deg,
 
-    #c99700 144deg 180deg,
+#171717 252deg 288deg,
 
-    #222 180deg 216deg,
+#ffd700 288deg 324deg,
 
-    #c99700 216deg 252deg,
+#171717 324deg 360deg
 
-    #222 252deg 288deg,
-
-    #c99700 288deg 324deg,
-
-    #222 324deg 360deg
-
-    );
-
-}
+);
 
 
 
-.wheel div{
+box-shadow:
 
-    position:absolute;
-
-    width:50%;
-
-    height:50%;
+0 0 40px #000;
 
 
-    left:25%;
+transition:
 
-    top:0;
+transform 20s cubic-bezier(.12,.8,.15,1);
 
-
-    transform-origin:50% 100%;
-
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-
-    font-size:18px;
-
-    font-weight:bold;
-
-
-    color:white;
 
 }
 
 
 
 
-.wheel div:nth-child(1){
-transform:rotate(0deg);
+
+.item{
+
+
+position:absolute;
+
+
+width:50%;
+
+height:50%;
+
+
+left:25%;
+
+top:0;
+
+
+transform-origin:50% 100%;
+
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+
+font-weight:bold;
+
+font-size:18px;
+
+
 }
 
-.wheel div:nth-child(2){
-transform:rotate(36deg);
-}
 
-.wheel div:nth-child(3){
-transform:rotate(72deg);
-}
 
-.wheel div:nth-child(4){
-transform:rotate(108deg);
-}
 
-.wheel div:nth-child(5){
-transform:rotate(144deg);
-}
 
-.wheel div:nth-child(6){
-transform:rotate(180deg);
-}
+.i1{transform:rotate(0deg)}
+.i2{transform:rotate(36deg)}
+.i3{transform:rotate(72deg)}
+.i4{transform:rotate(108deg)}
+.i5{transform:rotate(144deg)}
+.i6{transform:rotate(180deg)}
+.i7{transform:rotate(216deg)}
+.i8{transform:rotate(252deg)}
+.i9{transform:rotate(288deg)}
+.i10{transform:rotate(324deg)}
 
-.wheel div:nth-child(7){
-transform:rotate(216deg);
-}
 
-.wheel div:nth-child(8){
-transform:rotate(252deg);
-}
-
-.wheel div:nth-child(9){
-transform:rotate(288deg);
-}
-
-.wheel div:nth-child(10){
-transform:rotate(324deg);
-}
 
 
 
 
 button{
 
+margin-top:35px;
 
-    width:90%;
+width:90%;
 
-    padding:18px;
+padding:18px;
 
+border:0;
 
-    border:0;
-
-    border-radius:20px;
-
-
-    background:
-
-    linear-gradient(135deg,#ffd700,#966d00);
+border-radius:22px;
 
 
-    font-size:18px;
+background:
 
-    font-weight:bold;
+linear-gradient(135deg,#ffd700,#946900);
 
+
+font-size:18px;
+
+font-weight:bold;
 
 }
 
 
 
 
-#result{
+.result{
 
 
-    margin-top:30px;
+margin-top:35px;
 
 
-    background:#111;
+background:#111;
+
+border-radius:25px;
+
+padding:25px;
+
+font-size:22px;
 
 
-    border-radius:20px;
-
-
-    padding:20px;
-
-
-  }
+}
