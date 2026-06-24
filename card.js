@@ -7,6 +7,7 @@ let profit = 0;
 let playing = false;
 
 
+
 let data = JSON.parse(localStorage.getItem("royalData")) || {
 
     coins:100000,
@@ -33,7 +34,7 @@ function save(){
 function update(){
 
     document.getElementById("coins").innerHTML =
-    data.coins;
+    data.coins.toLocaleString();
 
 }
 
@@ -49,20 +50,7 @@ function setRisk(type){
 
     risk = type;
 
-
-    document.querySelectorAll(".risk-panel button")
-    .forEach(btn=>{
-
-        btn.style.opacity="0.5";
-
-    });
-
-
-    event.target.style.opacity="1";
-
 }
-
-
 
 
 
@@ -76,8 +64,7 @@ function startGame(){
 
 
 
-    bet =
-    Number(
+    bet = Number(
         document.getElementById("bet").value
     );
 
@@ -85,7 +72,7 @@ function startGame(){
 
     if(!bet || bet<=0){
 
-        alert("مبلغ بازی را وارد کنید");
+        alert("مبلغ را وارد کنید");
         return;
 
     }
@@ -101,8 +88,8 @@ function startGame(){
 
 
 
-    data.coins -= bet;
 
+    data.coins -= bet;
 
     data.games++;
 
@@ -110,13 +97,13 @@ function startGame(){
 
     profit = 0;
 
-
     playing = true;
 
 
 
+
     document.getElementById("betView").innerHTML =
-    bet;
+    bet.toLocaleString();
 
 
 
@@ -136,7 +123,7 @@ function startGame(){
 
 
 
-    if(risk==="safe"){
+    if(risk=="safe"){
 
 
         cards=[
@@ -153,22 +140,21 @@ function startGame(){
     }
 
 
-    else if(risk==="hard"){
+    else if(risk=="hard"){
 
 
         cards=[
 
             "BOMB",
             "BOMB",
-            "×2",
             "×3",
             "×5",
-            "×10"
+            "×8",
+            "POUCH"
 
         ];
 
     }
-
 
 
     else{
@@ -192,10 +178,7 @@ function startGame(){
 
 
 
-
     cards.sort(()=>Math.random()-0.5);
-
-
 
 
 
@@ -210,15 +193,12 @@ function startGame(){
 
 
 
-    cards.forEach((item,index)=>{
-
+    cards.forEach((item)=>{
 
 
         box.innerHTML += `
 
-
         <div class="card">
-
 
             <div class="inner"
             onclick="chooseCard(this,'${item}')">
@@ -226,27 +206,23 @@ function startGame(){
 
                 <div class="front">
 
-                    RG
+                RG
 
                 </div>
 
 
                 <div class="back">
 
-                    ${item}
+                ${item}
 
                 </div>
 
 
             </div>
 
-
         </div>
 
-
-
         `;
-
 
 
     });
@@ -258,8 +234,7 @@ function startGame(){
     document.getElementById("cashout").disabled=false;
 
 
-
-    document.getElementById("message").innerHTML=
+    document.getElementById("message").innerHTML =
     "یک کارت انتخاب کنید";
 
 
@@ -288,20 +263,28 @@ function chooseCard(card,value){
 
 
 
-    if(card.parentElement.classList.contains("open"))
+    let parent =
+    card.parentElement;
+
+
+
+    if(parent.classList.contains("open"))
     return;
 
 
 
 
-    card.parentElement.classList.add("open");
+    parent.classList.add("open");
 
 
 
 
 
+    if(value=="BOMB"){
 
-    if(value==="BOMB"){
+
+
+        parent.classList.add("bomb");
 
 
 
@@ -324,11 +307,19 @@ function chooseCard(card,value){
 
         بازی تمام شد
 
-        <br>
-
-        مبلغ بازی از بین رفت
-
         `;
+
+
+
+        document.body.style.animation="shake .5s";
+
+
+
+        setTimeout(()=>{
+
+            document.body.style.animation="";
+
+        },500);
 
 
 
@@ -341,8 +332,7 @@ function chooseCard(card,value){
 
 
 
-
-    if(value==="POUCH"){
+    if(value=="POUCH"){
 
 
 
@@ -364,21 +354,15 @@ function chooseCard(card,value){
 
 
 
-    let number =
+    let multi =
     Number(value.replace("×",""));
 
 
 
     profit =
-    Math.floor(
-        bet * number
-    );
+    Math.floor(bet * multi);
 
 
-
-
-    document.getElementById("profit").innerHTML =
-    profit;
 
 
 
@@ -387,22 +371,72 @@ function chooseCard(card,value){
 
 
 
+    animateNumber(
+        document.getElementById("profit"),
+        profit
+    );
+
+
+
+    parent.classList.add("win");
+
 
 
     document.getElementById("message").innerHTML=
 
     `
-    ✨ برد فعلی
+    ✨ برد
 
     <br>
 
-    ${profit} 🪙
+    سود فعلی:
+    ${profit.toLocaleString()} 🪙
 
     `;
 
 
 
 }
+
+
+
+
+
+
+
+
+function animateNumber(element,target){
+
+
+let start=0;
+
+
+let timer=setInterval(()=>{
+
+
+    start += Math.ceil(target/30);
+
+
+
+    if(start>=target){
+
+        start=target;
+
+        clearInterval(timer);
+
+    }
+
+
+    element.innerHTML =
+    start.toLocaleString();
+
+
+},30);
+
+
+
+}
+
 
 
 
@@ -423,28 +457,23 @@ function cashOut(){
     data.coins += profit;
 
 
-
     data.wins++;
 
 
 
-    if(profit > data.record){
+    if(profit>data.record){
 
-        data.record = profit;
+        data.record=profit;
 
     }
 
 
 
-
-
     data.history.unshift(
 
-        "🃏 Card Master : +"+profit+" 🪙"
+        "Card Master + "+profit+" 🪙"
 
     );
-
-
 
 
 
@@ -463,10 +492,9 @@ function cashOut(){
 
     <br>
 
-    ${profit} 🪙
+    ${profit.toLocaleString()} 🪙
 
     `;
-
 
 
 
@@ -475,4 +503,4 @@ function cashOut(){
     update();
 
 
-      }
+                  }
