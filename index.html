@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Royal Games Pro</title>
+<title>Royal Games</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
+
 
 <body>
 
@@ -19,29 +21,43 @@
 
 <header>
 
-<div class="user">
+<div class="user-box">
+
 <div class="avatar">
 M
 </div>
 
+
 <div>
-<h3>Mahan</h3>
-<p>Level 12</p>
-</div>
+
+<h3>
+Mahan
+</h3>
+
+<span>
+Level 12
+</span>
 
 </div>
+
+
+</div>
+
 
 
 <div class="balance">
 
 🪙
+
 <span id="coins">
-125000
+100000
 </span>
 
 </div>
 
+
 </header>
+
 
 
 
@@ -49,27 +65,47 @@ M
 <section class="stats">
 
 
-<div>
-<p>برد امروز</p>
-<h2 id="win">
-24000
-</h2>
+<div class="stat">
+
+<p>
+برد امروز
+</p>
+
+<b id="win">
+0
+</b>
+
+
 </div>
 
 
-<div>
-<p>بازی ها</p>
-<h2>
-128
-</h2>
+
+<div class="stat">
+
+<p>
+تعداد بازی
+</p>
+
+<b id="games">
+0
+</b>
+
+
 </div>
 
 
-<div>
-<p>رکورد</p>
-<h2>
-50000
-</h2>
+
+<div class="stat">
+
+<p>
+رکورد
+</p>
+
+<b id="record">
+0
+</b>
+
+
 </div>
 
 
@@ -78,9 +114,12 @@ M
 
 
 
+
+
 <h2 class="title">
-انتخاب بازی
+بازی ها
 </h2>
+
 
 
 
@@ -88,45 +127,94 @@ M
 <div class="games">
 
 
-<div class="game-card" onclick="cardsGame()">
+<a href="card.html" class="game">
 
-<div class="icon">
+<div>
 🃏
 </div>
 
-<h2>
+<h3>
 Card Master
-</h2>
+</h3>
 
 <p>
-انتخاب کارت و ضریب
+انتخاب کارت
 </p>
 
 
-</div>
+</a>
 
 
 
 
-<div class="game-card" onclick="wheelGame()">
 
-<div class="icon">
+<a href="wheel.html" class="game">
+
+
+<div>
 🎡
 </div>
 
-<h2>
+
+<h3>
 Lucky Wheel
-</h2>
+</h3>
+
 
 <p>
 گردونه شانس
 </p>
 
 
+</a>
+
+
+
 </div>
 
 
+
+
+
+
+
+<section class="wallet">
+
+
+<h2>
+کیف پول
+</h2>
+
+
+<div class="wallet-card">
+
+<h1>
+
+🪙
+
+<span id="walletCoins">
+100000
+
+</span>
+
+</h1>
+
+
+<button onclick="charge()">
+شارژ حساب
+</button>
+
+
+<button onclick="withdraw()">
+برداشت
+</button>
+
+
 </div>
+
+
+</section>
+
 
 
 
@@ -134,21 +222,21 @@ Lucky Wheel
 
 <nav>
 
-<button>
+
+<a>
 خانه
-</button>
+</a>
 
-<button>
-بازی ها
-</button>
 
-<button onclick="wallet()">
-کیف پول
-</button>
+<a href="card.html">
+بازی
+</a>
 
-<button>
+
+<a>
 پروفایل
-</button>
+</a>
+
 
 </nav>
 
@@ -157,7 +245,11 @@ Lucky Wheel
 </div>
 
 
-<script src="app.js"></script>
+
+
+<script src="script.js"></script>
+
 
 </body>
+
 </html>
