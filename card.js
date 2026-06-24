@@ -1,35 +1,67 @@
-let bet=0;
+let risk = "normal";
 
-let profit=0;
+let bet = 0;
 
-let multi=1;
+let profit = 0;
 
-let playing=false;
+let multiplier = 1;
+
+let playing = false;
 
 
 
-let data =
-JSON.parse(localStorage.getItem("royalData")) || {
+let data = JSON.parse(localStorage.getItem("royalData")) || {
 
 coins:100000,
 wins:0,
 games:0,
-record:0
+record:0,
+history:[]
 
 };
 
 
 
+function save(){
 
-function update(){
-
-coins.innerHTML=data.coins;
+localStorage.setItem(
+"royalData",
+JSON.stringify(data)
+);
 
 }
 
 
 
-update();
+function updateCoins(){
+
+document.getElementById("coins").innerHTML =
+data.coins;
+
+}
+
+
+
+updateCoins();
+
+
+
+
+
+function setRisk(type){
+
+risk = type;
+
+
+document.querySelectorAll(".risk button")
+.forEach(x=>x.style.opacity="0.5");
+
+
+event.target.style.opacity="1";
+
+
+}
+
 
 
 
@@ -42,7 +74,7 @@ return;
 
 
 
-bet=
+bet =
 Number(document.getElementById("bet").value);
 
 
@@ -50,7 +82,6 @@ Number(document.getElementById("bet").value);
 if(!bet || bet<=0){
 
 alert("مبلغ وارد کنید");
-
 return;
 
 }
@@ -60,37 +91,87 @@ return;
 if(bet>data.coins){
 
 alert("موجودی کافی نیست");
-
 return;
 
 }
 
 
 
+
 data.coins-=bet;
+
 
 data.games++;
 
 
-
 profit=0;
 
-multi=1;
+multiplier=1;
 
 
 playing=true;
 
 
 
-document.getElementById("betShow").innerHTML=bet;
-
-document.getElementById("profit").innerHTML=0;
-
-document.getElementById("multi").innerHTML="×1";
+document.getElementById("betView").innerHTML =
+bet;
 
 
+document.getElementById("profit").innerHTML =
+0;
 
-let cards=[
+
+document.getElementById("multi").innerHTML =
+"×1";
+
+
+
+let cards;
+
+
+
+if(risk=="safe"){
+
+
+cards=[
+
+"×0.5",
+"×1",
+"×1.5",
+"×2",
+"POUCH",
+"BOMB"
+
+];
+
+
+}
+
+
+
+else if(risk=="hard"){
+
+
+cards=[
+
+"BOMB",
+"BOMB",
+"×2",
+"×3",
+"×5",
+"POUCH"
+
+];
+
+
+}
+
+
+
+else{
+
+
+cards=[
 
 "BOMB",
 "BOMB",
@@ -102,36 +183,46 @@ let cards=[
 ];
 
 
+}
+
+
+
 
 cards.sort(()=>Math.random()-0.5);
 
 
 
-let box=document.getElementById("cards");
-
-
-box.innerHTML="";
+let table =
+document.getElementById("table");
 
 
 
-cards.forEach(x=>{
+table.innerHTML="";
 
 
-box.innerHTML+=`
 
-<div class="card" onclick="openCard(this,'${x}')">
+cards.forEach(value=>{
+
+
+table.innerHTML+=`
+
+<div class="card" onclick="chooseCard(this,'${value}')">
 
 
 <div class="inner">
 
 
 <div class="front">
+
 RG
+
 </div>
 
 
 <div class="back">
-${x}
+
+${value}
+
 </div>
 
 
@@ -146,12 +237,21 @@ ${x}
 
 
 
+
 document.getElementById("cashout").disabled=false;
+
+
+
+document.getElementById("message").innerHTML=
+
+"یک کارت انتخاب کنید";
+
 
 
 save();
 
-update();
+updateCoins();
+
 
 }
 
@@ -159,22 +259,38 @@ update();
 
 
 
-function openCard(card,value){
+
+function chooseCard(card,value){
 
 
 if(!playing)
 return;
 
 
+
 if(card.classList.contains("open"))
 return;
+
 
 
 card.classList.add("open");
 
 
 
+
+let message =
+document.getElementById("message");
+
+
+
+
+
 if(value=="BOMB"){
+
+
+
+card.classList.add("bomb");
+
 
 
 profit=0;
@@ -186,12 +302,35 @@ playing=false;
 document.getElementById("cashout").disabled=true;
 
 
-document.getElementById("result").innerHTML=
 
-"💣 BOMB<br>بازی تمام شد";
+message.innerHTML=
+
+`
+💣 BOMB
+
+<br>
+
+بازی تمام شد
+
+<br>
+
+موجودی این مرحله از بین رفت
+
+`;
+
+
+
+document.querySelectorAll(".card")
+.forEach(c=>{
+
+c.style.pointerEvents="none";
+
+});
+
 
 
 }
+
 
 
 
@@ -199,13 +338,22 @@ document.getElementById("result").innerHTML=
 else if(value=="POUCH"){
 
 
-document.getElementById("result").innerHTML=
 
-"پوچ شد";
+message.innerHTML=
+
+`
+پوچ
+
+<br>
+
+سودی دریافت نشد
+
+`;
 
 
 
 }
+
 
 
 
@@ -213,28 +361,44 @@ document.getElementById("result").innerHTML=
 else{
 
 
-multi=
+multiplier =
 Number(value.replace("×",""));
 
 
 
-profit=
-Math.floor(bet*multi);
+profit =
+Math.floor(bet*multiplier);
 
 
 
-document.getElementById("profit").innerHTML=
+document.getElementById("profit").innerHTML =
 profit;
 
 
-document.getElementById("multi").innerHTML=
+
+document.getElementById("multi").innerHTML =
 value;
 
 
 
-document.getElementById("result").innerHTML=
+card.classList.add("win");
 
-"🎉 سود فعلی: "+profit+" 🪙";
+
+
+message.innerHTML=
+
+`
+✨ برد
+
+<br>
+
+سود فعلی:
+
+<h2>
+${profit} 🪙
+</h2>
+
+`;
 
 
 
@@ -247,51 +411,60 @@ document.getElementById("result").innerHTML=
 
 
 
-function cashOut(){
+
+
+function cashout(){
 
 
 if(!playing)
 return;
 
 
-data.coins+=profit;
 
-
-if(profit>data.record)
-data.record=profit;
+data.coins += profit;
 
 
 data.wins++;
 
 
+if(profit > data.record)
+
+data.record=profit;
+
+
+
+data.history.unshift(
+
+"🃏 Card Master +"+profit+" 🪙"
+
+);
+
+
+
 playing=false;
+
 
 
 document.getElementById("cashout").disabled=true;
 
 
 
-document.getElementById("result").innerHTML=
+document.getElementById("message").innerHTML=
 
-"💰 برداشت شد: "+profit+" 🪙";
+`
+💰 برداشت موفق
+
+<br>
+
+${profit} 🪙 اضافه شد
+
+`;
 
 
 
 save();
 
-update();
+updateCoins();
 
 
 }
-
-
-
-
-function save(){
-
-localStorage.setItem(
-"royalData",
-JSON.stringify(data)
-);
-
-  }
