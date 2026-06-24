@@ -1,21 +1,22 @@
 *{
     box-sizing:border-box;
-    font-family:tahoma, sans-serif;
+    font-family:tahoma;
 }
 
-
 body{
-
     margin:0;
     background:
-    radial-gradient(circle at top,#222,#050505 60%);
-
+    radial-gradient(circle at top,#242424,#050505 70%);
     color:white;
-    text-align:center;
-
     min-height:100vh;
 }
 
+
+.app{
+    max-width:500px;
+    margin:auto;
+    padding-bottom:80px;
+}
 
 
 
@@ -27,7 +28,7 @@ header{
 
     padding:20px;
 
-    background:#0d0d0d;
+    background:#111;
 
     border-bottom:1px solid #333;
 
@@ -35,31 +36,67 @@ header{
 
 
 
-.logo{
+.user-box{
 
-    font-size:25px;
-    font-weight:bold;
-
-    color:#ffd700;
-
-    letter-spacing:2px;
+    display:flex;
+    align-items:center;
+    gap:12px;
 
 }
 
 
 
-.wallet{
+.avatar{
 
-    background:#171717;
+    width:55px;
+    height:55px;
 
-    padding:12px 20px;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+    linear-gradient(135deg,#ffd700,#8a6200);
+
+    color:#000;
+
+    font-size:25px;
+    font-weight:bold;
+
+}
+
+
+
+.user-box h3{
+
+    margin:0;
+
+}
+
+
+
+.user-box span{
+
+    color:#aaa;
+
+}
+
+
+
+
+.balance{
+
+    background:#191919;
+
+    padding:12px 18px;
 
     border-radius:20px;
 
     color:#ffd700;
 
-    box-shadow:
-    0 0 15px #000;
+    font-size:20px;
 
 }
 
@@ -67,15 +104,27 @@ header{
 
 
 
-.profile-box{
+.stats{
 
-    margin:20px;
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+
+    padding:20px;
+
+}
+
+
+
+.stat{
 
     background:#111;
 
-    border-radius:25px;
+    border-radius:20px;
 
-    padding:20px;
+    padding:15px;
 
     border:1px solid #292929;
 
@@ -83,7 +132,89 @@ header{
 
 
 
-.profile-box span{
+.stat p{
+
+    color:#aaa;
+
+    font-size:13px;
+
+}
+
+
+.stat b{
+
+    color:#ffd700;
+
+    font-size:22px;
+
+}
+
+
+
+
+.title{
+
+    padding:0 20px;
+
+}
+
+
+
+
+.games{
+
+    display:grid;
+
+    gap:20px;
+
+    padding:20px;
+
+}
+
+
+
+.game{
+
+    text-decoration:none;
+
+    color:white;
+
+    background:
+
+    linear-gradient(145deg,#171717,#090909);
+
+    border:1px solid #333;
+
+    border-radius:25px;
+
+    padding:25px;
+
+    transition:.3s;
+
+    box-shadow:0 15px 30px #000;
+
+}
+
+
+
+.game:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#ffd700;
+
+}
+
+
+
+.game div{
+
+    font-size:45px;
+
+}
+
+
+.game h3{
 
     color:#ffd700;
 
@@ -93,255 +224,57 @@ header{
 
 
 
-.buttons{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:15px;
+.wallet{
 
     padding:20px;
 
 }
 
 
+
+.wallet-card{
+
+    background:
+
+    linear-gradient(145deg,#1b1b1b,#080808);
+
+    border-radius:30px;
+
+    padding:25px;
+
+    border:1px solid #333;
+
+}
+
+
+
+.wallet-card h1{
+
+    color:#ffd700;
+
+}
 
 
 
 button{
 
-
-    padding:18px;
-
-    border:none;
-
-    border-radius:18px;
-
-
-    background:
-
-    linear-gradient(135deg,#ffd700,#a87500);
-
-
-    color:#111;
-
-    font-size:17px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-
-    box-shadow:
-    0 8px 20px #000;
-
-
-    transition:.3s;
-
-}
-
-
-
-button:hover{
-
-    transform:translateY(-4px);
-
-}
-
-
-
-
-
-#gameArea{
-
-    margin:20px;
-
-    background:#101010;
-
-    border-radius:25px;
-
-    padding:25px;
-
-    min-height:250px;
-
-}
-
-
-
-
-
-/* کارت ها */
-
-
-.cards{
-
-
-    display:grid;
-
-    grid-template-columns:repeat(3,90px);
-
-    justify-content:center;
-
-    gap:20px;
-
-
-}
-
-
-
-.card{
-
-
-    height:130px;
-
-    width:90px;
-
-
-    background:
-
-    linear-gradient(145deg,#222,#050505);
-
-
-    border:2px solid #ffd700;
-
-
-    border-radius:18px;
-
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-
-    font-size:30px;
-
-
-    cursor:pointer;
-
-
-    box-shadow:
-
-    0 10px 25px #000;
-
-
-    transition:.6s;
-
-
-    transform-style:preserve-3d;
-
-}
-
-
-
-.card:hover{
-
-    transform:
-    translateY(-8px)
-    rotateY(15deg);
-
-}
-
-
-
-
-.card.open{
-
-
-    background:#ffd700;
-
-    color:#111;
-
-
-    transform:
-    rotateY(180deg);
-
-}
-
-
-
-
-
-
-
-input{
-
-
-    width:80%;
+    width:100%;
 
     padding:15px;
 
+    margin-top:10px;
 
-    border-radius:15px;
+    border:0;
 
-
-    border:none;
-
-
-    background:#222;
-
-
-    color:white;
-
-
-    font-size:18px;
-
-
-    text-align:center;
-
-}
-
-
-
-
-
-.wheel{
-
-
-    width:300px;
-
-    height:300px;
-
-
-    border-radius:50%;
-
-
-    margin:30px auto;
-
+    border-radius:18px;
 
     background:
 
-    conic-gradient(
+    linear-gradient(135deg,#ffd700,#9b7000);
 
-    #ffd700 0 36deg,
+    font-size:16px;
 
-    #222 36deg 72deg,
-
-    #ffd700 72deg 108deg,
-
-    #222 108deg 144deg,
-
-    #ffd700 144deg 180deg,
-
-    #222 180deg 216deg,
-
-    #ffd700 216deg 252deg,
-
-    #222 252deg 288deg,
-
-    #ffd700 288deg 324deg,
-
-    #222 324deg
-
-    );
-
-
-    border:8px solid #ffd700;
-
-
-    transition:5s;
+    font-weight:bold;
 
 }
 
@@ -349,23 +282,38 @@ input{
 
 
 
+nav{
 
-.history{
+    position:fixed;
 
-    margin:20px;
+    bottom:0;
+
+    left:0;
+
+    right:0;
+
+    max-width:500px;
+
+    margin:auto;
 
     background:#111;
 
-    padding:20px;
+    display:flex;
 
-    border-radius:20px;
+    justify-content:space-around;
+
+    padding:18px;
+
+    border-top:1px solid #333;
 
 }
 
 
 
-#historyList{
+nav a{
 
-    color:#bbb;
+    color:#ffd700;
 
-    }
+    text-decoration:none;
+
+}
